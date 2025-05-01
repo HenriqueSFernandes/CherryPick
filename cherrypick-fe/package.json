@@ -1,5 +1,5 @@
 {
-  "name": "ctf-website",
+  "name": "cherrypick-fe",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --ignore-path ../.gitignore . --check",
     "format:fix": "prettier --ignore-path ../.gitignore . --write",
-    "prepare": "husky"
+    "prepare": "./pre-commit-hook.sh"
   },
   "dependencies": {
     "lucide-react": "^0.494.0",
