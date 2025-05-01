@@ -122,7 +122,14 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
+  header {
+    @apply h-16;
+  }
+  main {
     @apply bg-background text-foreground;
+    min-height: calc(100vh - 7rem);
+  }
+  footer {
+    @apply h-12;
   }
 }
