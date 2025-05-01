@@ -22,9 +22,17 @@
   </a>
 </p>
 
-## Project Overview
+# Table of Contents
 
-## Development Setup
+- [Project Overview](#project-overview)
+- [Development Setup](#development-setup)
+- [The Team](#the-team)
+
+# Project Overview
+
+Fresh Picks, Perfectly Paired: Enter your current pick and find handpicked book, show, movie or album recommendation pairs.
+
+# Development Setup
 
 1. Install the dependencies:
 
@@ -42,3 +50,31 @@ npm prepare
 ```bash
 npm run dev
 ```
+
+# The Team
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/42045371?v=4" width="150" height="150" alt="Bruno Oliveira">
+      <br>
+      <b>Bruno Oliveira</b>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/116096892?v=4" width="150" height="150" alt="Clara Sousa">
+      <br>
+      <b>Clara Sousa</b>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/85371550?v=4" width="150" height="150" alt="Henrique Fernandes">
+      <br>
+      <b>Henrique Fernandes</b>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/123483459?v=4" width="150" height="150" alt="Rodrigo Coelho">
+      <br>
+      <b>Rodrigo Coelho</b>
+    </td>
+  </tr>
+</table>
+
