@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "appwrite": "^17.0.2",
     "lucide-react": "^0.494.0",
     "next": "15.3.0",
     "prettier": "^3.5.3",
