@@ -33,7 +33,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Cherry Pick" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden ${montserrat.className}`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-mellow-white ${montserrat.className}`}
       >
         <Gradients />
         <Header />

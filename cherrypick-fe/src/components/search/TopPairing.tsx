@@ -7,9 +7,10 @@ import { Button } from "../ui/button";
 
 export default function TopPairing() {
   return (
-    <section className="grid grid-cols-[auto_1fr] gap-8">
+    <article className="grid grid-cols-[auto_1fr] gap-8">
       <Image src={bookTemplate} alt="Item cover" />
-      <section className="grid grid-rows-[auto_auto_1fr_auto]">
+
+      <section className="grid grid-rows-[auto_auto_1fr_auto] gap-4">
         <div>
           <h2
             className={`text-4xl font-bold ${makasar.className} text-dark-red`}
@@ -32,6 +33,6 @@ export default function TopPairing() {
           See
         </Button>
       </section>
-    </section>
+    </article>
   );
 }
