@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
+import Gradients from "@/components/general/gradients";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,10 +32,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Cherry Pick" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden`}
       >
+        <Gradients />
+        <Header />
         {children}
         <SpeedInsights />
+        <Footer />
       </body>
     </html>
   );
