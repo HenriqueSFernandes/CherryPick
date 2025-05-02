@@ -4,17 +4,24 @@ import SecondaryPairing from "@/components/search/SecondaryPairing";
 import TopPairing from "@/components/search/TopPairing";
 import { makasar, montserrat } from "@/fonts";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Search() {
+function SearchQuery() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
+  return <span className={`${makasar.className}`}>&#8220;{query}&#8221;</span>;
+}
+
+export default function Search() {
   return (
     <main className="p-8 flex flex-col gap-8 bg-transparent">
       <section className="inline">
         <h1 className="text-4xl">
           <span className={`${montserrat.className}`}>For </span>
-          <span className={`${makasar.className}`}>&#8220;{query}&#8221;</span>
+          <Suspense>
+            <SearchQuery />
+          </Suspense>
         </h1>
         <span className={`text-2xl ${montserrat.className}`}>we found</span>
       </section>
