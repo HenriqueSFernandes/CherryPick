@@ -36,7 +36,7 @@
 
 Cultural recommendation systems often stay confined to a single format: streaming platforms suggest more shows, bookstores suggest more books and so on. But users don't experience culture through a single channel — they move between music, films, literature, and series, looking for content that shares a certain flavour.
 
-**Cherry Pick** addresses this gap by offering cross-format recommendations. The user inputs their pick — a book, movie, show, or album — and receives a selection of perfect pairs from different media types. 
+**Cherry Pick** addresses this gap by offering cross-format recommendations. The user inputs their *pick* — a book, movie, show, or album — and receives a selection of perfect *pairs* from different media types. 
 
 # Development Setup
 
