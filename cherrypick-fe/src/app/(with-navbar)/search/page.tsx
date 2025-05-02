@@ -1,5 +1,6 @@
 import { get, getBackendUrl } from "@/utils";
 import SearchResults from "@/components/search/SearchResults";
+import { Item, Pairing } from "@/types";
 
 function ErrorMessage({ message }: { message: string }) {
   return (
@@ -14,38 +15,43 @@ export default async function Search({
 }: {
   searchParams: { query: string };
 }) {
-  const query = searchParams.query;
+  const query = (await searchParams).query;
 
   const item = await get(getBackendUrl() + `/search?query=${query}`);
   if (item.status !== 200) {
     const message =
-      item.status === 404 ? `No matches to "${query}" found` : item.data;
+      item.status === 404
+        ? `No matches to "${query}" found`
+        : (item.data as unknown as string);
     return <ErrorMessage message={message} />;
   }
 
   console.log(item.data);
+  const itemData = item.data as unknown as Item;
 
   // Fetch recommended pairings
   const recommendedPairings = await get(
-    getBackendUrl() + `/item/${item.data.id}/pairings`,
+    getBackendUrl() + `/item/${itemData.id}/pairings`,
   );
   if (recommendedPairings.status !== 200) {
     const message =
       recommendedPairings.status === 404
         ? "No pairings found"
-        : recommendedPairings.data;
+        : (recommendedPairings.data as unknown as string);
     return <ErrorMessage message={message} />;
   }
 
-  if (recommendedPairings.data.length === 0) {
+  const pairingsData = recommendedPairings.data as unknown as Pairing[];
+
+  if (pairingsData.length === 0) {
     return <ErrorMessage message="No pairings found" />;
   }
 
   return (
     <SearchResults
       query={query}
-      topPairing={recommendedPairings.data[0]}
-      secondaryPairings={recommendedPairings.data.slice(1, 9)}
+      topPairing={pairingsData[0]}
+      secondaryPairings={pairingsData.slice(1, 9)}
     />
   );
 }

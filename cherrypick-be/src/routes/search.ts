@@ -76,20 +76,27 @@ router.get("/", async (req: Request, res: Response) => {
             let newBook = await fetchBookFromOpenLibrary(query as string);
 
             if (newBook) {
-                book = {
-                    id: ID.unique(),
+                let storedBook = {
                     title: newBook.title,
                     author: newBook.author_name ? newBook.author_name.join(", ") : "Unknown author",
                     cover: newBook.cover_i ? `https://covers.openlibrary.org/b/id/${newBook.cover_i}-L.jpg` : undefined,
                     description: newBook.description || null,
                     type: "book",
                 }
-                await databases.createDocument(databaseId, collectionId, ID.unique(), book);
+                let bookId = ID.unique();
+                await databases.createDocument(databaseId, collectionId, bookId, storedBook);
+
+                book = {
+                    id: bookId,
+                    ...storedBook,
+                    type: "book",  // To avoid type error
+                }
 
             } else {
                 res.status(404).json({ error: "No results found" });
                 return;
             }
+            
         } else {
             // If results found in the database, return them
             book = {
