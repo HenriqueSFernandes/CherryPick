@@ -2,13 +2,13 @@
 
 import { login } from "@/lib/Authenticator";
 import Image from "next/image";
-import { makasar, montserrat } from "@/fonts";
+import { montserrat } from "@/fonts";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"; // Assuming you have a Button component
+import LoginLogo from "@/../public/loginLogo.svg";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 export default function LoginPage() {
   const { setUser } = useAuth();
   const router = useRouter();
@@ -29,19 +29,8 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center px-4 bg-transparent">
-      <Image
-        src="/logo.svg"
-        alt="Logo"
-        width={32}
-        height={32}
-        className="sm:w-64 sm:h-64 w-32 h-32"
-      />
-      <h1
-        className={`text-4xl sm:text-8xl font-bold mb-12 text-center text-dark-blue ${makasar.className}`}
-      >
-        Cherry Pick
-      </h1>
+    <main className="flex flex-col items-center justify-center bg-transparent px-4 p-[10px] md:p-[38px]">
+      <Image src={LoginLogo} alt="Logo" width="300" height="300" />
       <form onSubmit={handleLogin} className="flex flex-col w-full max-w-md">
         <p className={`pl-4 ${montserrat.className}`}>E-mail</p>
         <Input
@@ -73,20 +62,47 @@ export default function LoginPage() {
             Forgot Password?
           </p>
         </a>
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-center gap-x-4 mt-4">
           <Button
             type="submit"
-            className="rounded-full bg-black text-white h-10 font-semibold"
+            variant="default"
+            size="default"
+            className="bg-dark-red"
           >
             Login
           </Button>
           <Button
-            type="button"
-            className="rounded-full bg-black text-white h-10 font-semibold"
+            type="submit"
+            variant="default"
+            size="default"
+            className="bg-dark-red"
             onClick={() => router.push("/register")}
           >
             Register
           </Button>
+        </div>
+
+        <div className="flex items-center my-6 w-full">
+          <div className="flex-grow h-[1px] bg-dark-blue" />
+          <span className="mx-4 text-dark-blue font-medium">or</span>
+          <div className="flex-grow h-[1px] bg-dark-blue" />
+        </div>
+
+        <div className="flex justify-center gap-8 mt-4">
+          <Image
+            src="/github-logo.svg"
+            alt="Login com GitHub"
+            width={64}
+            height={64}
+            className="cursor-pointer"
+          />
+          <Image
+            src="/google-logo.svg"
+            alt="Login com Google"
+            width={64}
+            height={64}
+            className="cursor-pointer"
+          />
         </div>
       </form>
     </main>
