@@ -1,0 +1,12 @@
+{
+  "name": "cherrypick-be",
+  "version": "0.1.0",
+  "description": "",
+  "license": "SEE LICENSE IN /LICENSE",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  }
+}
