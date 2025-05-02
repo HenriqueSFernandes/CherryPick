@@ -2,3 +2,5 @@ cherrypick-fe/.next/
 cherrypick-fe/node_modules/
 cherrypick-fe/.secrets
 cherrypick-fe/.env.local
+
+cherrypick-be/node_modules/
