@@ -11,6 +11,9 @@
 </p>
 
 <p align="center">
+  <a href="https://taikai.network/shift-appens/hackathons/shift-appens-2025/projects/cma5qmwbm0dghu9xxhfum3wlk/idea">
+    <img alt="Taikai Project" src="https://img.shields.io/badge/Taikai-brightgreen?style=flat&color=38238a">
+  </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/stargazers">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/HenriqueSFernandes/CherryPick?style=social" />
   </a>
