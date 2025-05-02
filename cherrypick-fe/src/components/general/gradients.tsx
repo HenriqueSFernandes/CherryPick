@@ -1,6 +1,6 @@
 export default async function Gradients() {
   return (
-    <div className="absolute w-screen h-screen overflow-hidden -z-10">
+    <div className="absolute w-screen h-screen -z-10 overflow-hidden bg-mellow-white">
       <div
         className="fixed top-0 -right-[250px] w-[500px] h-[500px] rounded-full opacity-70 blur-xl"
         style={{
