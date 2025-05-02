@@ -34,6 +34,7 @@ router.get("/:id", async (req: Request, res: Response) => {
         }
 
         const pairing: Pairing = {
+            id: result.$id,
             user: result.userId,
             item1,
             item2,
@@ -64,12 +65,13 @@ router.post("/", async (req: Request, res: Response) => {
         }
 
         const pairing: Pairing = {
+            id: ID.unique(),
             user: user.$id,
             item1: item1,
             item2: item2,
         };
 
-        const result = await databases.createDocument(databaseId, collectionId, ID.unique(), {
+        const result = await databases.createDocument(databaseId, collectionId, pairing.id, {
             user: pairing.user,
             item1: pairing.item1,
             item2: pairing.item2,

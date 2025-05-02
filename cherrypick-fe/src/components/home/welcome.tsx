@@ -15,10 +15,17 @@ export default function Welcome() {
         Enter your current pick and find handpicked book, show, movie or album
         recommendations
       </div>
-      <Input
-        className={`row-start-5 h-10 ${montserrat.className} rounded-full border-dark-blue border-2 placeholder:text-gray-700`}
-        placeholder="Type here to start discovering..."
-      />
+      <form
+        action="/search"
+        method="get"
+        className={`w-full row-start-5 h-10 ${montserrat.className}`}
+      >
+        <Input
+          name="query"
+          placeholder="Type here to start discovering..."
+          className="w-full rounded-full border-dark-blue border-2 placeholder:text-gray-700"
+        />
+      </form>
     </section>
   );
 }

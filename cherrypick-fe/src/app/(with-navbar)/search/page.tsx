@@ -1,47 +1,51 @@
-"use client";
+import { get, getBackendUrl } from "@/utils";
+import SearchResults from "@/components/search/SearchResults";
 
-import SecondaryPairing from "@/components/search/SecondaryPairing";
-import TopPairing from "@/components/search/TopPairing";
-import { makasar, montserrat } from "@/fonts";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
-
-function SearchQuery() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
-
-  return <span className={`${makasar.className}`}>&#8220;{query}&#8221;</span>;
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <main className="p-8 grid justify-center items-center bg-transparent">
+      <h1 className="text-2xl text-center">{message}</h1>
+    </main>
+  );
 }
 
-export default function Search() {
+export default async function Search({
+  searchParams,
+}: {
+  searchParams: { query: string };
+}) {
+  const query = searchParams.query;
+
+  const item = await get(getBackendUrl() + `/search?query=${query}`);
+  if (item.status !== 200) {
+    const message =
+      item.status === 404 ? `No matches to "${query}" found` : item.data;
+    return <ErrorMessage message={message} />;
+  }
+
+  console.log(item.data);
+
+  // Fetch recommended pairings
+  const recommendedPairings = await get(
+    getBackendUrl() + `/item/${item.data.id}/pairings`,
+  );
+  if (recommendedPairings.status !== 200) {
+    const message =
+      recommendedPairings.status === 404
+        ? "No pairings found"
+        : recommendedPairings.data;
+    return <ErrorMessage message={message} />;
+  }
+
+  if (recommendedPairings.data.length === 0) {
+    return <ErrorMessage message="No pairings found" />;
+  }
+
   return (
-    <main className="p-8 flex flex-col gap-8 bg-transparent">
-      <section className="inline">
-        <h1 className="text-4xl">
-          <span className={`${montserrat.className}`}>For </span>
-          <Suspense>
-            <SearchQuery />
-          </Suspense>
-        </h1>
-        <span className={`text-2xl ${montserrat.className}`}>we found</span>
-      </section>
-      <TopPairing />
-      <section>
-        <h2 className={`text-2xl ${makasar.className}`}>Other Pairings</h2>
-        <div className="overflow-x-scroll">
-          <div className="flex gap-8 w-max">
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-            <SecondaryPairing />
-          </div>
-        </div>
-      </section>
-    </main>
+    <SearchResults
+      query={query}
+      topPairing={recommendedPairings.data[0]}
+      secondaryPairings={recommendedPairings.data.slice(1, 9)}
+    />
   );
 }

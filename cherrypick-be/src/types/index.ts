@@ -1,4 +1,5 @@
 type Item = {
+    id: string;
     title: string;
     author: string;
     cover?: string;
@@ -7,6 +8,7 @@ type Item = {
 }
 
 type Pairing = {
+    id: string;
     user: string;
     item1: Item;
     item2: Item;

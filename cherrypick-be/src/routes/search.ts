@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { Databases, Query } from "appwrite";
+import { Databases, ID, Query } from "appwrite";
 import client from "../lib/AppwriteClient";
 
 const router = Router();
@@ -77,13 +77,14 @@ router.get("/", async (req: Request, res: Response) => {
 
             if (newBook) {
                 book = {
+                    id: ID.unique(),
                     title: newBook.title,
                     author: newBook.author_name ? newBook.author_name.join(", ") : "Unknown author",
                     cover: newBook.cover_i ? `https://covers.openlibrary.org/b/id/${newBook.cover_i}-L.jpg` : undefined,
                     description: newBook.description || null,
                     type: "book",
                 }
-                await databases.createDocument(databaseId, collectionId, "unique()", book);
+                await databases.createDocument(databaseId, collectionId, ID.unique(), book);
 
             } else {
                 res.status(404).json({ error: "No results found" });
@@ -92,6 +93,7 @@ router.get("/", async (req: Request, res: Response) => {
         } else {
             // If results found in the database, return them
             book = {
+                id: result.documents[0].$id,
                 title: result.documents[0].title,
                 author: result.documents[0].author,
                 cover: result.documents[0].cover,
