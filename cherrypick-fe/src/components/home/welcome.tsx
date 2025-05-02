@@ -14,7 +14,8 @@ export default async function Welcome() {
         recommendations
       </div>
       <Input
-        className={`row-start-5 ${montserrat.className} rounded-full border-black border-2`}
+        className={`row-start-5 h-10 ${montserrat.className} rounded-full border-black border-2 placeholder:text-gray-700`}
+        placeholder="Type here to start discovering..."
       ></Input>
     </section>
   );
