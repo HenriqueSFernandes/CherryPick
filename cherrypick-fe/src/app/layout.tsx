@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CherryPick",
-  description: "ShiftAPPens",
+  title: "Cherry Pick",
+  description: "Fresh Picks, Perfectly Paired",
 };
 
 export default function RootLayout({
@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Cherry Pick" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
