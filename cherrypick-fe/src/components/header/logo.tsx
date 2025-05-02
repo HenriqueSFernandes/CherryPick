@@ -7,7 +7,7 @@ export default async function Logo() {
   return (
     <Link href="/" className={`flex items-center ${makasar.className}`}>
       <Image src={icon} alt="Cherry Pick Logo" width={48} height={48} />
-      <span className="text-2xl font-bold text-gray-900">Cherry Pick</span>
+      <span className="text-2xl font-bold text-dark-blue">Cherry Pick</span>
     </Link>
   );
 }
