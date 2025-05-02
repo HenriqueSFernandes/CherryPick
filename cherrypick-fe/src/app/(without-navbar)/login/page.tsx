@@ -7,10 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"; // Assuming you have a Button component
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginPage() {
   const { setUser } = useAuth();
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -36,29 +38,38 @@ export default function LoginPage() {
         className="sm:w-64 sm:h-64 w-32 h-32"
       />
       <h1
-        className={`text-4xl sm:text-8xl font-bold mb-12 text-center ${makasar.className}`}
+        className={`text-4xl sm:text-8xl font-bold mb-12 text-center text-dark-blue ${makasar.className}`}
       >
         Cherry Pick
       </h1>
       <form onSubmit={handleLogin} className="flex flex-col w-full max-w-md">
-        <p className={`pl-4 ${montserrat.className}`}>Email</p>
+        <p className={`pl-4 ${montserrat.className}`}>E-mail</p>
         <Input
           name="email"
           type="email"
           required
-          placeholder="Email"
-          className={`h-10 ${montserrat.className} rounded-full border-black border-2 placeholder:text-gray-700 px-4 mb-4`}
+          placeholder="E-mail"
+          className={`h-10 ${montserrat.className} rounded-full border-dark-blue border-2 placeholder:text-gray-700 px-4 mb-4`}
         />
         <p className={` pl-4 ${montserrat.className}`}>Password</p>
-        <Input
-          name="password"
-          type="password"
-          required
-          placeholder="Password"
-          className={`h-10 ${montserrat.className} rounded-full border-black border-2 placeholder:text-gray-700 px-4`}
-        />
-        <a className="text-sm text-gray-500 hover:text-gray-700 text-right underline">
-          <p className={`pr-4 mb-4 ${montserrat.className}`}>
+        <div className="relative">
+          <Input
+            name="password"
+            type={showPassword ? "text" : "password"}
+            required
+            placeholder="Password"
+            className={`h-10 ${montserrat.className} rounded-full border-dark-blue border-2 placeholder:text-gray-700 px-4`}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 cursor-pointer"
+          >
+            {showPassword ? "hide" : "show"} {/* TODO: Replace with icon */}
+          </button>
+        </div>
+        <a className="text-sm text-gray-500 hover:text-gray-700 text-right underline cursor-pointer">
+          <p className={`pr-4 my-2 ${montserrat.className}`}>
             Forgot Password?
           </p>
         </a>
