@@ -9,6 +9,7 @@ import LoginLogo from "@/../public/loginLogo.svg";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Eye, EyeClosed } from "lucide-react";
 export default function LoginPage() {
   const { setUser } = useAuth();
   const router = useRouter();
@@ -54,7 +55,7 @@ export default function LoginPage() {
             onClick={() => setShowPassword(!showPassword)}
             className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 cursor-pointer"
           >
-            {showPassword ? "hide" : "show"} {/* TODO: Replace with icon */}
+            {showPassword ? <Eye /> : <EyeClosed />}{" "}
           </button>
         </div>
         <a className="text-sm text-gray-500 hover:text-gray-700 text-right underline cursor-pointer">
