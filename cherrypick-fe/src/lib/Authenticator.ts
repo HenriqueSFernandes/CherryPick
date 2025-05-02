@@ -1,6 +1,6 @@
 import client from "@/lib/AppwriteClient";
 
-import { Account, ID } from "appwrite";
+import { Account, ID, OAuthProvider } from "appwrite";
 
 const account = new Account(client);
 
@@ -34,6 +34,30 @@ export const login = async (email: string, password: string) => {
       console.log(error);
     },
   );
+};
+
+export const loginGithub = async () => {
+  try {
+    account.createOAuth2Session(
+      OAuthProvider.Github,
+      "http://144.91.115.254:3000/",
+      "http://144.91.115.254:3000/login",
+    );
+  } catch (error) {
+    console.error("Login error:", error);
+  }
+};
+
+export const loginGitlab = async () => {
+  try {
+    account.createOAuth2Session(
+      OAuthProvider.Gitlab,
+      "http://144.91.115.254:3000/",
+      "http://144.91.115.254:3000/login",
+    );
+  } catch (error) {
+    console.error("Login error:", error);
+  }
 };
 
 export const logout = async () => {
