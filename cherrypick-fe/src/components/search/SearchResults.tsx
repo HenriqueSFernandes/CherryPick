@@ -32,7 +32,7 @@ export default function SearchResults({
               <div className="text-2xl">No other pairings found</div>
             )}
             {secondaryPairings.map((pairing: Pairing, index: number) => (
-              <SecondaryPairing key={index} />
+              <SecondaryPairing pairing={pairing} key={index} />
             ))}
           </div>
         </div>

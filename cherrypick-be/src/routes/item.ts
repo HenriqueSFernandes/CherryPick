@@ -26,11 +26,13 @@ router.get("/:id/pairings", async (req: Request, res: Response) => {
                 Query.equal("item1", id),
                 Query.equal("item2", id),
             ]),
+            Query.limit(10),
         ]);
 
+        const documents = result.documents.sort((d1, d2) => 0);
 
         const pairs = [];
-        for (const doc of result.documents) {
+        for (const doc of documents) {
             // Fetch the item details for item1 and item2
             const item1 = toItem(await databases.getDocument(databaseId, "items", doc.item1));
             const item2 = toItem(await databases.getDocument(databaseId, "items", doc.item2));
@@ -39,8 +41,8 @@ router.get("/:id/pairings", async (req: Request, res: Response) => {
                 pairs.push({
                     id: doc.$id,
                     user: doc.user,
-                    item1: item1,
-                    item2: item2,
+                    item1: item1.id == id ? item1 : item2,
+                    item2: item1.id == id ? item2 : item1,
                 });
             }
         }

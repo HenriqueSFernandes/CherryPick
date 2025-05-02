@@ -12,11 +12,15 @@ export default function SecondaryPairing({ pairing }: { pairing: Pairing }) {
         <Image
           src={pairing.item1.cover || bookTemplate}
           alt="Item 1 cover"
+          width={128}
+          height={128} // Next.js forces me to define these...
           className="h-32 w-32 absolute object-contain"
         />
         <Image
           src={pairing.item2.cover || bookTemplate}
           alt="Item 2 cover"
+          width={128}
+          height={128}
           className="h-32 w-32 left-4 top-4 absolute object-contain"
         />
       </Link>

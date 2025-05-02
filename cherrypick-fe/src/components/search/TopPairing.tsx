@@ -9,7 +9,14 @@ import { Pairing } from "@/types";
 export default function TopPairing({ pairing }: { pairing: Pairing }) {
   return (
     <article className="grid grid-cols-[auto_1fr] gap-8">
-      <Image src={bookTemplate} alt="Item cover" />
+      <div className="relative w-64">
+        <Image
+          src={pairing.item2.cover ?? bookTemplate}
+          alt="Item cover"
+          fill
+          className="object-contain"
+        />
+      </div>
 
       <section className="grid grid-rows-[auto_auto_1fr_auto] gap-4">
         <div>
@@ -25,7 +32,7 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
           <h3 className="text-2xl font-medium">{pairing.item2.title}</h3>
           <p>Book by {pairing.item2.author}</p>
           {pairing.item2.description && (
-            <p>&#8220;{pairing.item2.description}&#8221;</p>
+            <p className="italic">&#8220;{pairing.item2.description}&#8221;</p>
           )}
         </div>
 
