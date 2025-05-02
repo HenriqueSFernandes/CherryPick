@@ -9,14 +9,16 @@ import LoginLogo from "@/../public/loginLogo.svg";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const { setUser } = useAuth();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (event: React.FormEvent) => {
+    setIsLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget as HTMLFormElement);
     const username = formData.get("email") as string;
@@ -25,9 +27,12 @@ export default function LoginPage() {
     if (!newUser) {
       alert("Login failed");
       setUser(null);
+      setIsLoading(false);
       return;
     }
     setUser(newUser);
+    setIsLoading(false);
+    router.push("/");
   };
 
   return (
@@ -71,13 +76,17 @@ export default function LoginPage() {
             size="default"
             className="bg-dark-red"
           >
-            Login
+            {isLoading ? (
+              <Loader2 className="animate-spin w-8 h-8 " />
+            ) : (
+              "Login"
+            )}
           </Button>
           <Button
             type="submit"
             variant="default"
             size="default"
-            className="bg-dark-red"
+            className="bg-dark-red text-md"
             onClick={() => router.push("/register")}
           >
             Register

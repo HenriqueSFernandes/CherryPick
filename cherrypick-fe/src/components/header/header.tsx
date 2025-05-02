@@ -21,7 +21,7 @@ export default function Header() {
       <span></span>
       {user ? (
         <Button className="font-bold bg-dark-red" onClick={handleLogout}>
-          {user.email}
+          Logout
         </Button>
       ) : (
         <Button
