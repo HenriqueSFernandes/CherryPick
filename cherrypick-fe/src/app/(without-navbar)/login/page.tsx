@@ -1,15 +1,16 @@
 "use client";
 
-import { login } from "@/lib/Authenticator";
+import { login, loginGithub, loginGitlab } from "@/lib/Authenticator";
 import Image from "next/image";
 import { montserrat } from "@/fonts";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button"; // Assuming you have a Button component
+import { Button } from "@/components/ui/button";
 import LoginLogo from "@/../public/loginLogo.svg";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
+
 export default function LoginPage() {
   const { setUser } = useAuth();
   const router = useRouter();
@@ -90,20 +91,24 @@ export default function LoginPage() {
         </div>
 
         <div className="flex justify-center gap-8 mt-4">
-          <Image
-            src="/github-logo.svg"
-            alt="Login com GitHub"
-            width={64}
-            height={64}
-            className="cursor-pointer"
-          />
-          <Image
-            src="/google-logo.svg"
-            alt="Login com Google"
-            width={64}
-            height={64}
-            className="cursor-pointer"
-          />
+          <a onClick={() => loginGithub()}>
+            <Image
+              src="/github-logo.svg"
+              alt="Login with GitHub"
+              width={64}
+              height={64}
+              className="cursor-pointer"
+            />
+          </a>
+          <a onClick={() => loginGitlab()}>
+            <Image
+              src="/gitlab-logo.svg"
+              alt="Login with GitLab"
+              width={64}
+              height={64}
+              className="cursor-pointer"
+            />
+          </a>
         </div>
       </form>
     </main>
