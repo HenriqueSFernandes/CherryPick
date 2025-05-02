@@ -30,48 +30,58 @@
 
 # Project Overview
 
-Fresh Picks, Perfectly Paired: Enter your current pick and find handpicked book, show, movie or album recommendation pairs.
+<h4 align="center">
+🍒 Fresh Picks, Perfectly Paired 🍒
+</h4>
+
+<!--
+Cultural recommendation systems often stay confined to a single format: streaming platforms suggest more shows, bookstores suggest more books. But users don’t experience culture in isolated channels — they move fluidly between music, films, literature, and series, often looking for content that shares a certain feeling, theme, or atmosphere.
+
+Cherry Pick addresses this gap by offering cross-format recommendations. The user inputs any cultural title — a book, movie, show, or album — and receives a curated selection of related works from other media types. The goal is to enable discovery that reflects how people actually consume culture: connected, contextual, and varied.
+
+The interface is intentionally minimalist: a single search bar invites users to start with what they already love. From there, the system presents carefully matched content across formats, making cultural exploration more natural, intuitive, and creatively rewarding.
+-->
 
 # Development Setup
 
 1. Install the dependencies:
 
-```bash
-npm install
-npm prepare
-```
+  ```bash
+  npm install
+  npm prepare
+  ```
 
-2. Install and deploy [appwrite](https://appwrite.io/docs/advanced/self-hosting).
+2. Install and deploy [Appwrite](https://appwrite.io/docs/advanced/self-hosting).
 
 3. Update the `.env.example` file with your appwrite credentials.
 
 4. Run the development server:
 
-```bash
-npm run dev
-```
+  ```bash
+  npm run dev
+  ```
 
 # The Team
 
 <table>
   <tr>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/42045371?v=4" width="150" height="150" alt="Bruno Oliveira">
+      <img src="https://avatars.githubusercontent.com/u/42045371?v=4" width="auto" height="auto" alt="Bruno Oliveira">
       <br>
       <b>Bruno Oliveira</b>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/116096892?v=4" width="150" height="150" alt="Clara Sousa">
+      <img src="https://avatars.githubusercontent.com/u/116096892?v=4" width="auto" height="auto" alt="Clara Sousa">
       <br>
       <b>Clara Sousa</b>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/85371550?v=4" width="150" height="150" alt="Henrique Fernandes">
+      <img src="https://avatars.githubusercontent.com/u/85371550?v=4" width="auto" height="auto" alt="Henrique Fernandes">
       <br>
       <b>Henrique Fernandes</b>
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/123483459?v=4" width="150" height="150" alt="Rodrigo Coelho">
+      <img src="https://avatars.githubusercontent.com/u/123483459?v=4" width="auto" height="auto" alt="Rodrigo Coelho">
       <br>
       <b>Rodrigo Coelho</b>
     </td>
