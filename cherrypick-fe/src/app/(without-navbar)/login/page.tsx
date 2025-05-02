@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <main className="flex flex-col items-center justify-center px-4 bg-transparent">
       <Image
-        src="/icon.svg"
+        src="/logo.svg"
         alt="Logo"
         width={32}
         height={32}
