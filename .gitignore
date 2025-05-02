@@ -4,3 +4,4 @@ cherrypick-fe/.secrets
 cherrypick-fe/.env.local
 
 cherrypick-be/node_modules/
+cherrypick-be/.env.local
