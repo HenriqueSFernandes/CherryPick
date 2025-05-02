@@ -7,7 +7,7 @@ const databases = new Databases(client);
 
 // Replace with your database and collection IDs
 const databaseId = process.env.APPWRITE_DATABASE_ID || "";
-const pairingsCollectionId = process.env.APPWRITE_PAIRINGS_COLLECTION_ID || "";
+const pairingsCollectionId = "pairings";
 
 // Get all related pairings for an item
 router.get("/:id/pairings", async (req: Request, res: Response) => {
@@ -21,11 +21,14 @@ router.get("/:id/pairings", async (req: Request, res: Response) => {
 
         // Query pairings where the item is either `item1` or `item2`
         const result = await databases.listDocuments(databaseId, pairingsCollectionId, [
-            Query.equal("item1", id),
-            Query.equal("item2", id),
+            Query.or([
+                Query.equal("item1", id),
+                Query.equal("item2", id),
+            ]),
         ]);
 
         res.status(200).json(result.documents);
+
     } catch (error: any) {
         console.error("Error fetching related pairings:", error.message);
         res.status(500).json({ error: "Failed to fetch related pairings" });

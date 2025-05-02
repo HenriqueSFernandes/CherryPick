@@ -7,7 +7,7 @@ const databases = new Databases(client);
 
 // Replace with your database and collection IDs
 const databaseId = process.env.APPWRITE_DATABASE_ID || "";
-const collectionId = process.env.APPWRITE_PAIRINGS_COLLECTION_ID || "";
+const collectionId = "pairings";
 
 // Get a pairing by ID
 router.get("/:id", async (req: Request, res: Response) => {
