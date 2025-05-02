@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/check.yml">
-    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/lint.yml?label=Lint %26 Format Check&logo=github&logoColor=white&labelColor=0b2e44&color=b41b27">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/lint.yml?label=Lint_%26_Format_Check&logo=github&logoColor=white&labelColor=0b2e44&color=b41b27">
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/github/license/HenriqueSFernandes/CherryPick?label=License&logo=readthedocs&logoColor=white&labelColor=0b2e44&color=b41b27" />
@@ -19,7 +19,7 @@
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/HenriqueSFernandes/CherryPick?label=Issues&labelColor=0b2e44&color=b41b27" />
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/pulls">
-    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenriqueSFernandes/CherryPick?label=Pull Requests&labelColor=0b2e44&color=b41b27" />
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenriqueSFernandes/CherryPick?label=Pull_Requests&labelColor=0b2e44&color=b41b27" />
   </a>
 </p>
 
