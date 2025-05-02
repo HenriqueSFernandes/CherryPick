@@ -1,7 +1,7 @@
 import { makasar, montserrat } from "@/fonts";
 import { Input } from "../ui/input";
 
-export default async function Welcome() {
+export default function Welcome() {
   return (
     <section className="grid grid-rows-[auto_2rem_auto_0.5rem_auto] max-w-lg justify-items-center">
       <div

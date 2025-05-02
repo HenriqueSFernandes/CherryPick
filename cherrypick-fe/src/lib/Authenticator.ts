@@ -2,6 +2,8 @@ import client from "@/lib/AppwriteClient";
 
 import { Account, ID } from "appwrite";
 
+const account = new Account(client);
+
 export const register = async (
   email: string,
   password: string,
@@ -10,7 +12,6 @@ export const register = async (
   if (password !== passwordConfirmation) {
     throw new Error("Passwords do not match");
   }
-  const account = new Account(client);
   const promise = account.create(ID.unique(), email, password);
   promise.then(
     function (response) {
@@ -23,11 +24,11 @@ export const register = async (
 };
 
 export const login = async (email: string, password: string) => {
-  const account = new Account(client);
   const promise = account.createEmailPasswordSession(email, password);
   return await promise.then(
     async function () {
-      return (await account.get()).name;
+      const user = await account.get();
+      return user;
     },
     function (error) {
       console.log(error);
@@ -36,6 +37,9 @@ export const login = async (email: string, password: string) => {
 };
 
 export const logout = async () => {
-  const account = new Account(client);
   await account.deleteSession("current");
+};
+
+export const getUser = async () => {
+  return await account.get();
 };
