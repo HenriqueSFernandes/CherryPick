@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --ignore-path ../.gitignore . --check",
     "format:fix": "prettier --ignore-path ../.gitignore . --write",
-    "prepare": "./pre-commit-hook.sh"
+    "prepare": "[ \"$SKIP_HOOKS\" = \"1\" ] || ./pre-commit-hook.sh"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.0",
