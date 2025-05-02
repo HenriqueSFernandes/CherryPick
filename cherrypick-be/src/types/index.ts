@@ -9,7 +9,6 @@ type Item = {
 
 type Pairing = {
     id: string;
-    user: string;
     item1: Item;
     item2: Item;
 }
