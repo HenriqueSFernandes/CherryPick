@@ -1,5 +1,11 @@
-"use client";
+import Welcome from "@/components/home/welcome";
 
 export default function Home() {
-  return <p>hello</p>;
+  return (
+    <main className="grid justify-center items-center">
+      <section>
+        <Welcome />
+      </section>
+    </main>
+  );
 }

@@ -43,9 +43,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@theme {
-}
-
 @layer utilities {
 }
 
@@ -103,7 +100,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-1: oklcnpx shadcn @latest add buttonh(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
@@ -118,11 +115,23 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Custom Pallete */
+@theme {
+  --color-dark-red: hsla(1, 98%, 24%, 1);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
+  header {
+    @apply h-16;
+  }
+  main {
     @apply bg-background text-foreground;
+    min-height: calc(100vh - 7rem);
+  }
+  footer {
+    @apply h-12;
   }
 }
