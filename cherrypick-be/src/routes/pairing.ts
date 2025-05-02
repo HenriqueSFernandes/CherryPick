@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { Account, Databases, ID } from "appwrite";
 import client from "../lib/AppwriteClient";
+import { toItem } from "../types/utils";
 
 const router = Router();
 const databases = new Databases(client);
@@ -25,10 +26,17 @@ router.get("/:id", async (req: Request, res: Response) => {
             return;
         }
 
+        const item1 = toItem(await databases.getDocument(databaseId, "items", result.item1));
+        const item2 = toItem(await databases.getDocument(databaseId, "items", result.item2));
+        if (!item1 || !item2) {
+            res.status(404).json({ error: "One or both items not found." });
+            return;
+        }
+
         const pairing: Pairing = {
             user: result.userId,
-            item1: result.item1,
-            item2: result.item2,
+            item1,
+            item2,
         };
         res.status(200).json(pairing);
 
@@ -61,7 +69,11 @@ router.post("/", async (req: Request, res: Response) => {
             item2: item2,
         };
 
-        const result = await databases.createDocument(databaseId, collectionId, ID.unique(), pairing);
+        const result = await databases.createDocument(databaseId, collectionId, ID.unique(), {
+            user: pairing.user,
+            item1: pairing.item1,
+            item2: pairing.item2,
+        });
         res.status(201).json(result);
 
     } catch (error: any) {

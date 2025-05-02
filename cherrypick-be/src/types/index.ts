@@ -8,6 +8,6 @@ type Item = {
 
 type Pairing = {
     user: string;
-    item1: string;
-    item2: string;
+    item1: Item;
+    item2: Item;
 }
