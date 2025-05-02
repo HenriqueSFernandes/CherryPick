@@ -11,7 +11,7 @@ export default function SearchResults({
   secondaryPairings,
 }: {
   query: string;
-  topPairing: Pairing;
+  topPairing?: Pairing;
   secondaryPairings: Pairing[];
 }) {
   return (
@@ -21,22 +21,28 @@ export default function SearchResults({
           <span className={`${montserrat.className}`}>For </span>
           <span className={`${makasar.className}`}>&#8220;{query}&#8221;</span>
         </h1>
-        <span className={`text-2xl ${montserrat.className}`}>we found</span>
+        <span className={`text-2xl ${montserrat.className}`}>
+          {topPairing ? "we found" : "no matches we're found"}
+        </span>
       </section>
-      <TopPairing pairing={topPairing} />
-      <section className="space-y-4">
-        <h2 className={`text-2xl ${makasar.className}`}>Other Pairings</h2>
-        <div className="overflow-x-scroll">
-          <div className="flex gap-8 w-max">
-            {secondaryPairings.length === 0 && (
-              <div className="text-2xl">No other pairings found</div>
-            )}
-            {secondaryPairings.map((pairing: Pairing, index: number) => (
-              <SecondaryPairing pairing={pairing} key={index} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {topPairing && (
+        <>
+          <TopPairing pairing={topPairing} />
+          <section className="space-y-4">
+            <h2 className={`text-2xl ${makasar.className}`}>Other Pairings</h2>
+            <div className="overflow-x-scroll">
+              <div className="flex gap-8 w-max">
+                {secondaryPairings.length === 0 && (
+                  <div className="text-2xl">No other pairings found</div>
+                )}
+                {secondaryPairings.map((pairing: Pairing, index: number) => (
+                  <SecondaryPairing pairing={pairing} key={index} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </main>
   );
 }
