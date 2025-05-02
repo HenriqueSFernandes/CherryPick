@@ -7,6 +7,11 @@ app.get("/", (req: Request, res: Response) => {
 	res.send("Hello from TypeScript + Express!");
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`);
+});
+
+server.on("error", (err) => {
+	console.error(`Failed to start server: ${err.message}`);
+	process.exit(1);
 });
