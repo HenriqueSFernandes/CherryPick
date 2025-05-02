@@ -6,7 +6,10 @@ export default async function Welcome() {
   return (
     <section className="grid grid-rows-[auto_2rem_auto_0.5rem_auto] max-w-lg justify-items-center">
       <div className="max-w-96 ">
-        <Image src={WelcomeLogo} alt="HomePage Welcome Logo" />
+        <Image
+          src={WelcomeLogo}
+          alt="Welcome Logo Fresh Picks Perfectly Paired"
+        />
       </div>
       <div className={`row-start-3 ${montserrat.className} text-center`}>
         Enter your current pick and find handpicked book, show, movie or album
