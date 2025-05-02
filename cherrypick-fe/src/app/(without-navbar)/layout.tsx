@@ -5,6 +5,7 @@ import "./../globals.css";
 import Footer from "@/components/footer/footer";
 import Gradients from "@/components/general/gradients";
 import { AuthProvider } from "@/context/AuthContext";
+import { montserrat } from "@/fonts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Cherry Pick" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-mellow-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-mellow-white ${montserrat.className}`}
       >
         <Gradients />
         <AuthProvider>{children}</AuthProvider>
