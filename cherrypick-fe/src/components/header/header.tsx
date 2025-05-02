@@ -1,11 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import Logo from "./logo";
 import { useAuth } from "@/context/AuthContext";
 import { logout } from "@/lib/Authenticator";
 
 export default function Header() {
+  const router = useRouter();
   const { user, setUser } = useAuth();
 
   const handleLogout = async () => {
@@ -22,7 +24,12 @@ export default function Header() {
           {user.email}
         </Button>
       ) : (
-        <Button className="font-bold bg-dark-red">Login</Button>
+        <Button
+          className="font-bold bg-dark-red"
+          onClick={() => router.push("/login")}
+        >
+          Login
+        </Button>
       )}
     </header>
   );
