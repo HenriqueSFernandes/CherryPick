@@ -117,12 +117,21 @@
 
 /* Custom Pallete */
 @theme {
+  --color-dark-blue: hsla(202, 97%, 15%, 1);
+  --color-light-blue: hsla(205, 100%, 79%, 1);
+  --color-bright-red: hsla(355, 83%, 41%, 1);
   --color-dark-red: hsla(1, 98%, 24%, 1);
+  --color-mellow-white: hsla(46, 100%, 97%, 1);
+  --color-bright-green: hsla(108, 24%, 48%, 1);
+  --color-dark-green: hsla(108, 27%, 40%, 1);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  body {
+    overflow-x: hidden;
   }
   header {
     @apply h-16;
