@@ -1,27 +1,34 @@
 <div align="center">
     <img alt="Banner" src="./assets/banner.png">
 </div>
+
 <p align="center">
   <a href="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/check.yml">
-    <img alt="CI" src="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/lint.yml/badge.svg">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/lint.yml?label=Lint %26 Format Check&logo=github&logoColor=white&labelColor=0b2e44&color=b41b27">
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/blob/main/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/HenriqueSFernandes/CherryPick" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/HenriqueSFernandes/CherryPick?label=License&logo=readthedocs&logoColor=white&labelColor=0b2e44&color=b41b27" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://taikai.network/shift-appens/hackathons/shift-appens-2025/projects/cma5qmwbm0dghu9xxhfum3wlk/idea">
-    <img alt="Taikai Project" src="https://img.shields.io/badge/Taikai-brightgreen?style=flat&color=38238a">
-  </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HenriqueSFernandes/CherryPick?style=social" />
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/HenriqueSFernandes/CherryPick?style=flat&logo=github&logoColor=white&label=Stars&labelColor=0b2e44&color=b41b27" />
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/issues">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HenriqueSFernandes/CherryPick" />
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/HenriqueSFernandes/CherryPick?label=Issues&labelColor=0b2e44&color=b41b27" />
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/pulls">
-    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenriqueSFernandes/CherryPick" />
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenriqueSFernandes/CherryPick?label=Pull Requests&labelColor=0b2e44&color=b41b27" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.figma.com/design/gPBEkQUZbiTJnn7XmYfYIN/Untitled?node-id=59-18&t=D8GtG0ijODsHL7bv-1">
+    <img alt="Figma Project" src="https://img.shields.io/badge/Figma-577f4e?logo=figma&logoColor=white">
+  </a>
+  <a href="https://taikai.network/shift-appens/hackathons/shift-appens-2025/projects/cma5qmwbm0dghu9xxhfum3wlk/idea">
+    <img alt="Taikai Project" src="https://img.shields.io/badge/Taikai-577f4e">
   </a>
 </p>
 
