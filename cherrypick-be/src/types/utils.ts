@@ -8,7 +8,7 @@ function toItem(data: any): Item | null {
     if (data.type !== "book")
         return null;
     return {
-        id: data.id,
+        id: data.$id,
         title: data.title,
         author: data.author,
         cover: data.cover,
