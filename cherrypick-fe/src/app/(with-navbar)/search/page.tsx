@@ -13,7 +13,7 @@ function ErrorMessage({ message }: { message: string }) {
 export default async function Search({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams: Promise<{ query: string }>;
 }) {
   const query = (await searchParams).query;
 
@@ -32,6 +32,7 @@ export default async function Search({
   const recommendedPairings = await get(
     getBackendUrl() + `/item/${itemData.id}/pairings`,
   );
+  console.log(recommendedPairings);
 
   if (
     recommendedPairings.status !== 200 &&

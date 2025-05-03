@@ -8,13 +8,40 @@ const databases = new Databases(client);
 
 // Replace with your database and collection IDs
 const databaseId = process.env.APPWRITE_DATABASE_ID || "";
+const itemsCollectionId = "items";
 const pairingsCollectionId = "pairings2";
+
+// Get an item by ID
+router.get("/:id", async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            res.status(400).json({ error: "Query parameter is required" });
+            return;
+        }
+
+        // Query items based on the search query
+        let result;
+        try {
+            result = await databases.getDocument(databaseId, itemsCollectionId, id);
+        } catch (error) {
+            res.status(404).json({ error: "Item not found" });
+            return;
+        }
+
+        const item = toItem(result);
+        res.status(200).json(item);
+
+    } catch (error: any) {
+        console.error("Error fetching item:", error.message);
+        res.status(500).json({ error: "Failed to fetch item" });
+    }
+});
 
 // Get all related pairings for an item
 router.get("/:id/pairings", async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-
         if (!id) {
             res.status(400).json({ error: "Item ID is required." });
             return;
@@ -33,6 +60,7 @@ router.get("/:id/pairings", async (req: Request, res: Response) => {
 
         const pairs = [];
         for (const doc of documents) {
+            
             // Fetch the item details for item1 and item2
             const item1 = toItem(await databases.getDocument(databaseId, "items", doc.item1));
             const item2 = toItem(await databases.getDocument(databaseId, "items", doc.item2));
