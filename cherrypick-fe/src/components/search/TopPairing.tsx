@@ -8,8 +8,8 @@ import { Pairing } from "@/types";
 
 export default function TopPairing({ pairing }: { pairing: Pairing }) {
   return (
-    <article className="grid grid-cols-[auto_1fr] gap-8">
-      <div className="relative w-64">
+    <article className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8">
+      <div className="relative mx-auto w-40 aspect-[2/3] md:w-64 md:aspect-auto md:mx-0">
         <Image
           src={pairing.item2.cover ?? bookTemplate}
           alt="Item cover"
