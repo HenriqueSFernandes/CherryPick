@@ -6,3 +6,7 @@ services:
     restart: always
     environment:
       NODE_ENV: production
+networks:
+  default:
+    external: true
+    name: shared-net
