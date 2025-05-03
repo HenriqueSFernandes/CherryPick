@@ -9,53 +9,65 @@ import { Pairing } from "@/types";
 import { Heart } from "lucide-react";
 import { useState } from "react";
 
-export default function TopPairing({ pairing }: { pairing: Pairing }) {
+export default function TopPairing({ pairing }: { pairing?: Pairing }) {
   const [liked, setLiked] = useState(false);
 
   return (
     <article className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-17 items-start">
-      {/* Coluna 1: Imagem */}
-      <div className="relative w-64 h-96 mx-auto lg:mx-0">
-        <Image
-          src={pairing.item2.cover ?? bookTemplate}
-          alt="Item cover"
-          fill
-          className="object-contain"
-        />
-      </div>
+      {!pairing && (
+        <>
+          <span></span>
+          <span></span>
+        </>
+      )}
+      {pairing && (
+        <>
+          {/* Coluna 1: Imagem */}
+          <div className="relative w-64 h-96 mx-auto lg:mx-0">
+            <Image
+              src={pairing.item2.cover ?? bookTemplate}
+              alt="Item cover"
+              fill
+              className="object-contain"
+            />
+          </div>
 
-      {/* Coluna 2: Informação do livro */}
-      <section className="grid grid-rows-[auto_auto_1fr_auto] gap-4 self-start">
-        <div>
-          <h2
-            className={`text-4xl font-bold ${makasar.className} text-dark-red`}
-          >
-            Cherry On Top
-          </h2>
-          <p>100% of users agree</p>
-        </div>
+          {/* Coluna 2: Informação do livro */}
+          <section className="grid grid-rows-[auto_auto_1fr_auto] gap-4 self-start">
+            <div>
+              <h2
+                className={`text-4xl font-bold ${makasar.className} text-dark-red`}
+              >
+                Cherry On Top
+              </h2>
+              <p>100% of users agree</p>
+            </div>
 
-        <div>
-          <h3 className="text-2xl font-medium">{pairing.item2.title}</h3>
-          <p>Book by {pairing.item2.author}</p>
-          {pairing.item2.description && (
-            <p className="italic">&#8220;{pairing.item2.description}&#8221;</p>
-          )}
-        </div>
+            <div>
+              <h3 className="text-2xl font-medium">{pairing.item2.title}</h3>
+              <p>Book by {pairing.item2.author}</p>
+              {pairing.item2.description && (
+                <p className="italic">
+                  &#8220;{pairing.item2.description}&#8221;
+                </p>
+              )}
+            </div>
 
-        <div className="row-start-4 flex items-center gap-4">
-          <Heart
-            onClick={() => setLiked((prev) => !prev)}
-            className="cursor-pointer w-7 h-7"
-            style={{
-              fill: liked ? "#8B0000" : "none",
-              color: liked ? "#8B0000" : "#9CA3AF",
-            }}
-          />
-          <Button className="bg-dark-red font-bold">Read</Button>
-          <Button className="bg-dark-red font-bold">Hide</Button>
-        </div>
-      </section>
+            <div className="row-start-4 flex items-center gap-4">
+              <Heart
+                onClick={() => setLiked((prev) => !prev)}
+                className="cursor-pointer w-7 h-7"
+                style={{
+                  fill: liked ? "#8B0000" : "none",
+                  color: liked ? "#8B0000" : "#9CA3AF",
+                }}
+              />
+              <Button className="bg-dark-red font-bold">Read</Button>
+              <Button className="bg-dark-red font-bold">Hide</Button>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* Coluna 3: Search e Pairings */}
       <div className="flex flex-col gap-2 w-full max-w-[15rem] mx-auto lg:mx-0">
@@ -85,7 +97,7 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
               <input
                 id="item1b"
                 type="text"
-                placeholder={pairing.item2.title}
+                placeholder={pairing ? pairing.item2.title : undefined}
                 className="w-full rounded-full border border-gray-300 px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-dark-red"
               />
             </div>

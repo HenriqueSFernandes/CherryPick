@@ -25,6 +25,7 @@ export default function SearchResults({
           {topPairing ? "we found" : "no matches we're found"}
         </span>
       </section>
+      {!topPairing && <TopPairing pairing={undefined} />}
       {topPairing && (
         <>
           <TopPairing pairing={topPairing} />
