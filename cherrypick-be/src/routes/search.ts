@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { Databases, Query } from "appwrite";
+import { Databases, ID, Query } from "appwrite";
 import client from "../lib/AppwriteClient";
 
 const router = Router();
@@ -7,7 +7,7 @@ const databases = new Databases(client);
 
 const fetchBookFromOpenLibrary = async (query: string) => {
     // Search for books matching the query
-    const searchResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`)
+    const searchResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&fields=title,author_name,cover_i&offset=0&limit=1`);
     let book;
 
     if (!searchResponse.ok) {
@@ -73,25 +73,36 @@ router.get("/", async (req: Request, res: Response) => {
         let book: Item;
         if (result.documents.length === 0) {
             // If no results found in the database, try to fetch a book from Open Library
+            console.log(1)
             let newBook = await fetchBookFromOpenLibrary(query as string);
+            console.log(2)
 
             if (newBook) {
-                book = {
+                let storedBook = {
                     title: newBook.title,
                     author: newBook.author_name ? newBook.author_name.join(", ") : "Unknown author",
                     cover: newBook.cover_i ? `https://covers.openlibrary.org/b/id/${newBook.cover_i}-L.jpg` : undefined,
                     description: newBook.description || null,
                     type: "book",
                 }
-                await databases.createDocument(databaseId, collectionId, "unique()", book);
+                let bookId = ID.unique();
+                await databases.createDocument(databaseId, collectionId, bookId, storedBook);
+
+                book = {
+                    id: bookId,
+                    ...storedBook,
+                    type: "book",  // To avoid type error
+                }
 
             } else {
                 res.status(404).json({ error: "No results found" });
                 return;
             }
+
         } else {
             // If results found in the database, return them
             book = {
+                id: result.documents[0].$id,
                 title: result.documents[0].title,
                 author: result.documents[0].author,
                 cover: result.documents[0].cover,
