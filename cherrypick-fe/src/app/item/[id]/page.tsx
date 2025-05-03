@@ -5,12 +5,14 @@ import { makasar } from "@/fonts";
 
 export default function ItemPage() {
   return (
-    <main className="p-8 gap-8 bg-transparent flex flex-col sm:flex-row lg:gap-16">
-      <Item />
+    <main className="p-8 gap-8 bg-transparent flex flex-col sm:flex-row lg:gap-16 max-w-full overflow-x-hidden">
+      <div className="max-w-full">
+        <Item />
+      </div>
 
-      <div className="flex flex-col gap-4">
-        <section className="flex flex-col gap-8">
-          <div className="flex flex-row flex-wrap justify-center sm:justify-start gap-4">
+      <div className="flex flex-col gap-4 max-w-full">
+        <section className="flex flex-col gap-8 max-w-full">
+          <div className="flex flex-row flex-wrap justify-center sm:justify-start gap-4 max-w-full">
             <Button className="bg-bright-red font-bold" size="lg">
               Reasons
             </Button>
@@ -22,7 +24,7 @@ export default function ItemPage() {
             </Button>
           </div>
 
-          <div className="bg-white/50 border-l-4 border-dark-red p-4 rounded-md flex flex-col gap-y-2">
+          <div className="bg-white/50 border-l-4 border-dark-red p-4 flex flex-col gap-y-2 max-w-3xl w-full overflow-x-auto">
             <p>
               <span className="font-bold">Genres:</span> Classics, Fiction,
               Horror
@@ -47,7 +49,7 @@ export default function ItemPage() {
           </div>
         </section>
 
-        <section>
+        <section className="max-w-full">
           <h2 className={`p-4 text-2xl text-dark-blue ${makasar.className}`}>
             Other Pairings
           </h2>
