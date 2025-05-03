@@ -48,7 +48,7 @@ export default function ItemView({ item, pairings }: Props) {
             </p>
             <p>
               <span className="font-bold">Description:</span>&nbsp;
-              {item.description}
+              {item.description ?? "No description available."}
             </p>
           </div>
         </section>

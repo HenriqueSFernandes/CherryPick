@@ -13,7 +13,7 @@ function ErrorMessage({ message }: { message: string }) {
 export default async function Search({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams: Promise<{ query: string }>;
 }) {
   const query = (await searchParams).query;
 

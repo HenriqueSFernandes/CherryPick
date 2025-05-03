@@ -5,8 +5,6 @@ function toItem(data: any): Item | null {
         return null;
     if (!data.title || !data.author)
         return null;
-    if (data.type !== "book")
-        return null;
     return {
         id: data.$id,
         title: data.title,

@@ -10,7 +10,11 @@ function ErrorMessage({ message }: { message: string }) {
   );
 }
 
-export default async function ItemPage({ params }: { params: { id: string } }) {
+export default async function ItemPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const id = (await params).id;
 
   const item = await get(getBackendUrl() + `/item/${id}`);
