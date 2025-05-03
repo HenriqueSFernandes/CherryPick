@@ -5,8 +5,12 @@ import bookTemplate from "@/../public/book-template.png";
 import { makasar } from "@/fonts";
 import { Button } from "../ui/button";
 import { Pairing } from "@/types";
+import { Heart } from "lucide-react";
+import { useState } from "react";
 
 export default function TopPairing({ pairing }: { pairing: Pairing }) {
+  const [liked, setLiked] = useState(false);
+
   return (
     <article className="grid grid-cols-[auto_1fr] gap-8">
       <div className="relative w-64">
@@ -36,9 +40,18 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
           )}
         </div>
 
-        <Button className="row-start-4 justify-self-start bg-dark-red font-bold">
-          See More
-        </Button>
+        <div className="row-start-4 flex items-center gap-4">
+          <Heart
+            onClick={() => setLiked((prev) => !prev)}
+            className="cursor-pointer w-7 h-7"
+            style={{
+              fill: liked ? "#8B0000" : "none",
+              color: liked ? "#8B0000" : "#9CA3AF",
+            }}
+          />
+          <Button className="bg-dark-red font-bold">Read</Button>
+          <Button className="bg-dark-red font-bold">Hide</Button>
+        </div>
       </section>
     </article>
   );
