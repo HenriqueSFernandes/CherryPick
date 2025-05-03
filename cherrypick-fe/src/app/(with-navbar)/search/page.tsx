@@ -32,6 +32,7 @@ export default async function Search({
   const recommendedPairings = await get(
     getBackendUrl() + `/item/${itemData.id}/pairings`,
   );
+  console.log(recommendedPairings);
 
   if (
     recommendedPairings.status !== 200 &&

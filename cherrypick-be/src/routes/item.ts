@@ -60,6 +60,7 @@ router.get("/:id/pairings", async (req: Request, res: Response) => {
 
         const pairs = [];
         for (const doc of documents) {
+            
             // Fetch the item details for item1 and item2
             const item1 = toItem(await databases.getDocument(databaseId, "items", doc.item1));
             const item2 = toItem(await databases.getDocument(databaseId, "items", doc.item2));
