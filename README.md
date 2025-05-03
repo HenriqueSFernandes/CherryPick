@@ -47,19 +47,33 @@ Cultural recommendation systems often stay confined to a single format: streamin
 
 # Development Setup
 
-1. In order to run this project, you need `Node.js` (>= 18.17.0) and `npm` installed. We recommend using `nvm` for this.
+> In order to run this project, you need `Node.js` (>= 18.17.0) and `npm` installed. We recommend using `nvm` for this.
 
-2. Install the dependencies.
+## Frontend
+
+1. Install the dependencies.
   ```bash
   npm install
   npm run prepare
   ```
 
-3. Install and deploy [Appwrite](https://appwrite.io/docs/advanced/self-hosting).
+2. Install and deploy [Appwrite](https://appwrite.io/docs/advanced/self-hosting).
 
-4. Create the `.env.local` file with your Appwrite credentials. You can use the `.env.example` as a basis for this.
+3. Create the `.env.local` file with your Appwrite credentials. You can use the `.env.example` as a basis for this.
 
-5. Run the development server:
+4. Run the development server:
+  ```bash
+  npm run dev
+  ```
+
+## Backend
+
+1. Install the dependencies.
+  ```bash
+  npm install
+  ```
+
+2. Run the development server:
   ```bash
   npm run dev
   ```
