@@ -1,6 +1,6 @@
 import { get, getBackendUrl } from "@/utils";
-import SearchResults from "@/components/search/SearchResults";
 import { Item, Pairing } from "@/types";
+import ItemView from "@/components/item/ItemView";
 
 function ErrorMessage({ message }: { message: string }) {
   return (
@@ -10,18 +10,18 @@ function ErrorMessage({ message }: { message: string }) {
   );
 }
 
-export default async function Search({
-  searchParams,
+export default async function ItemPage({
+  params,
 }: {
-  searchParams: Promise<{ query: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const query = (await searchParams).query;
+  const id = (await params).id;
 
-  const item = await get(getBackendUrl() + `/search?query=${query}`);
+  const item = await get(getBackendUrl() + `/item/${id}`);
   if (item.status !== 200) {
     const message =
       item.status === 404
-        ? `No matches to "${query}" found`
+        ? `Could not find item with id "${id}"`
         : (item.data as unknown as string);
     return <ErrorMessage message={message} />;
   }
@@ -29,10 +29,10 @@ export default async function Search({
   const itemData = item.data as unknown as Item;
 
   // Fetch recommended pairings
+  console.log(getBackendUrl() + `/item/${itemData.id}/pairings`);
   const recommendedPairings = await get(
     getBackendUrl() + `/item/${itemData.id}/pairings`,
   );
-  console.log(recommendedPairings);
 
   if (
     recommendedPairings.status !== 200 &&
@@ -46,13 +46,6 @@ export default async function Search({
     recommendedPairings.status !== 404
       ? (recommendedPairings.data as unknown as Pairing[])
       : [];
-  const hasData = pairingsData.length > 0;
 
-  return (
-    <SearchResults
-      query={query}
-      topPairing={hasData ? pairingsData[0] : undefined}
-      secondaryPairings={hasData ? pairingsData.slice(1, 9) : []}
-    />
-  );
+  return <ItemView item={itemData} pairings={pairingsData} />;
 }

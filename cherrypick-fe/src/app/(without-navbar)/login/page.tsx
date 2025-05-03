@@ -10,6 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Eye, EyeClosed, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function LoginPage() {
   const { setUser } = useAuth();
@@ -37,7 +38,9 @@ export default function LoginPage() {
 
   return (
     <main className="flex flex-col items-center justify-center bg-transparent px-4 p-[10px] md:p-[38px] min-h-screen">
-      <Image src={LoginLogo} alt="Logo" width="300" height="300" />
+      <Link href="/" className="cursor-pointer">
+        <Image src={LoginLogo} alt="Logo" width="300" height="300" />
+      </Link>
       <form onSubmit={handleLogin} className="flex flex-col w-full max-w-md">
         <p className={`pl-4 ${montserrat.className}`}>E-mail</p>
         <Input

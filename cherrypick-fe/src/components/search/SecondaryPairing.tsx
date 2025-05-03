@@ -7,8 +7,8 @@ import { Pairing } from "@/types";
 
 export default function SecondaryPairing({ pairing }: { pairing: Pairing }) {
   return (
-    <article className="h-36 w-36 relative">
-      <Link href={"/pairing/1/2"}>
+    <article className="h-40 w-36 relative" title={pairing.item2.title}>
+      <Link href={`/item/${pairing.item2.id}`}>
         <Image
           src={pairing.item1.cover || bookTemplate}
           alt="Item 1 cover"

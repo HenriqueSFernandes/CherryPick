@@ -1,13 +1,21 @@
-import Item from "@/components/item/Item";
-import SecondaryPairing from "@/components/search/SecondaryPairing";
-import { Button } from "@/components/ui/button";
-import { makasar } from "@/fonts";
+"use client";
 
-export default function ItemPage() {
+import { Item, Pairing } from "@/types";
+import ItemInfo from "./ItemInfo";
+import { Button } from "../ui/button";
+import { makasar } from "@/fonts";
+import RelatedPairings from "../search/RelatedPairings";
+
+type Props = {
+  item: Item;
+  pairings: Pairing[];
+};
+
+export default function ItemView({ item, pairings }: Props) {
   return (
     <main className="p-8 gap-8 bg-transparent flex flex-col sm:flex-row lg:gap-16 max-w-full overflow-x-hidden">
       <div className="max-w-full">
-        <Item />
+        <ItemInfo item={item} />
       </div>
 
       <div className="flex flex-col gap-4 max-w-full">
@@ -30,21 +38,17 @@ export default function ItemPage() {
               Horror
             </p>
             <p>
-              <span className="font-bold">Author:</span> Charlotte Bronte
+              <span className="font-bold">Author:</span> {item.author}
             </p>
             <p>
-              <span className="font-bold">About the Author:</span> Oscar Fingal
+              <span className="font-bold">About the Author:</span> {item.author}
               O&apos;Fflahertie Wills Wilde was an Irish poet and playwright.
               After writing in different forms throughout the 1880s, he became
               one of the most popular playwrights in London in the early 1890s.
             </p>
             <p>
-              <span className="font-bold">Synopsis:</span> Enthralled by his own
-              exquisite portrait, Dorian Gray exchanges his soul for eternal
-              youth and beauty. Influenced by his friend Lord Henry Wotton, he
-              is drawn into a corrupt double life, indulging his desires in
-              secret while remaining a gentleman in the eyes of polite society.
-              Only his portrait bears the traces of his decadence.
+              <span className="font-bold">Description:</span>&nbsp;
+              {item.description ?? "No description available."}
             </p>
           </div>
         </section>
@@ -53,19 +57,7 @@ export default function ItemPage() {
           <h2 className={`p-4 text-2xl text-dark-blue ${makasar.className}`}>
             Other Pairings
           </h2>
-          <div className="overflow-x-scroll">
-            <div className="flex gap-8 w-max">
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-            </div>
-          </div>
+          <RelatedPairings pairings={pairings} />
         </section>
       </div>
     </main>
