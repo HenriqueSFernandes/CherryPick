@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { Pairing } from "@/types";
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function TopPairing({ pairing }: { pairing?: Pairing }) {
   const [liked, setLiked] = useState(false);
@@ -22,17 +23,20 @@ export default function TopPairing({ pairing }: { pairing?: Pairing }) {
       )}
       {pairing && (
         <>
-          {/* Coluna 1: Imagem */}
-          <div className="relative w-64 h-96 mx-auto lg:mx-0">
+          {/* Column 1: Image */}
+          <Link
+            href={`/item/${pairing.item2.id}`}
+            className="relative w-64 h-96 mx-auto lg:mx-0"
+          >
             <Image
               src={pairing.item2.cover ?? bookTemplate}
               alt="Item cover"
               fill
               className="object-contain"
             />
-          </div>
+          </Link>
 
-          {/* Coluna 2: Informação do livro */}
+          {/* Column 2: Book information */}
           <section className="grid grid-rows-[auto_auto_1fr_auto] gap-4 self-start">
             <div>
               <h2
@@ -69,7 +73,7 @@ export default function TopPairing({ pairing }: { pairing?: Pairing }) {
         </>
       )}
 
-      {/* Coluna 3: Search e Pairings */}
+      {/* Column 3: Search and Pairings */}
       <div className="flex flex-col gap-2 w-full max-w-[15rem] mx-auto lg:mx-0">
         {/* Search bar */}
         <form
