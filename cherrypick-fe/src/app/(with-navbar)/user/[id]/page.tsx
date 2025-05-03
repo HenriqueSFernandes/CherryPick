@@ -1,14 +1,31 @@
-import SecondaryPairing from "@/components/search/SecondaryPairing";
+import RelatedPairings from "@/components/search/RelatedPairings";
 import Profile from "@/components/user/profile";
 import { makasar } from "@/fonts";
+import { Pairing } from "@/types";
+import { get, getBackendUrl } from "@/utils";
 
-export default function UserPage() {
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
+
+  const recommendedPairingsRes = await get(
+    getBackendUrl() + `/user/${id}/pairings`,
+  );
+
+  const recommendedPairings =
+    recommendedPairingsRes.status === 200
+      ? (recommendedPairingsRes.data as unknown as Pairing[])
+      : [];
+
   return (
     <main className="flex justify-between px-48 py-16 gap-16 bg-transparent">
       <Profile />
       <div className="flex flex-col gap-8">
-        <section className="flex flex-col gap-8 bg-white/50 border-l-4 border-dark-red p-4 rounded-md text-2xl">
-          <p className="font-bold">About</p>
+        <section className="flex flex-col gap-8 bg-white/50 border-l-4 border-dark-red p-4 rounded-md text-lg">
+          <h1 className={`font-bold text-4xl ${makasar.className}`}>About</h1>
           <p>
             {" "}
             I tend to gravitate toward emotionally rich and thought-provoking
@@ -33,18 +50,10 @@ export default function UserPage() {
           </p>
         </section>
         <section>
-          <h2 className={`text-4xl text-dark-blue p-4 ${makasar.className}`}>
+          <h2 className={`text-3xl text-dark-blue p-4 ${makasar.className}`}>
             Pairings
           </h2>
-          <div className="overflow-x-scroll py-4">
-            <div className="flex gap-8 w-max">
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-              <SecondaryPairing />
-            </div>
-          </div>
+          <RelatedPairings pairings={recommendedPairings} />
         </section>
       </div>
     </main>

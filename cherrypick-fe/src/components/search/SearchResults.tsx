@@ -1,9 +1,9 @@
 "use client";
 
-import SecondaryPairing from "@/components/search/SecondaryPairing";
 import TopPairing from "@/components/search/TopPairing";
 import { makasar, montserrat } from "@/fonts";
 import { Pairing } from "@/types";
+import RelatedPairings from "./RelatedPairings";
 
 export default function SearchResults({
   query,
@@ -30,17 +30,8 @@ export default function SearchResults({
           <TopPairing pairing={topPairing} />
           <section className="space-y-4">
             <h2 className={`text-2xl ${makasar.className}`}>Other Pairings</h2>
-            <div className="overflow-x-scroll">
-              <div className="flex gap-8 w-max">
-                {secondaryPairings.length === 0 && (
-                  <div className="text-2xl">No other pairings found</div>
-                )}
-                {secondaryPairings.map((pairing: Pairing, index: number) => (
-                  <SecondaryPairing pairing={pairing} key={index} />
-                ))}
-              </div>
-            </div>
           </section>
+          <RelatedPairings pairings={secondaryPairings} />
         </>
       )}
     </main>

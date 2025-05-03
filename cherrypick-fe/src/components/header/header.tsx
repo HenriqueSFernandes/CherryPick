@@ -20,12 +20,15 @@ export default function Header() {
       <Logo />
       <span></span>
       {user ? (
-        <Button className="font-bold bg-dark-red" onClick={handleLogout}>
+        <Button
+          className="font-bold bg-dark-red cursor-pointer"
+          onClick={handleLogout}
+        >
           Logout
         </Button>
       ) : (
         <Button
-          className="font-bold bg-dark-red"
+          className="font-bold bg-dark-red cursor-pointer"
           onClick={() => router.push("/login")}
         >
           Login

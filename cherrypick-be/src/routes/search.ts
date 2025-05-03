@@ -73,9 +73,7 @@ router.get("/", async (req: Request, res: Response) => {
         let book: Item;
         if (result.documents.length === 0) {
             // If no results found in the database, try to fetch a book from Open Library
-            console.log(1)
             let newBook = await fetchBookFromOpenLibrary(query as string);
-            console.log(2)
 
             if (newBook) {
                 let storedBook = {
