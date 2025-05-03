@@ -37,9 +37,9 @@ export default function LoginPage() {
 
   return (
     <main className="flex flex-col items-center justify-center bg-transparent px-4 p-[10px] md:p-[38px] min-h-screen">
-      <a onClick={() => router.push("/")} className="cursor-pointer">
+      <Link href="/" className="cursor-pointer">
         <Image src={LoginLogo} alt="Logo" width="300" height="300" />
-      </a>
+      </Link>
       <form onSubmit={handleLogin} className="flex flex-col w-full max-w-md">
         <p className={`pl-4 ${montserrat.className}`}>E-mail</p>
         <Input
