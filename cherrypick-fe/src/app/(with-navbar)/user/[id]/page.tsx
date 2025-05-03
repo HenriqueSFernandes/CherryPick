@@ -24,8 +24,8 @@ export default async function UserPage({
     <main className="flex justify-between px-48 py-16 gap-16 bg-transparent">
       <Profile />
       <div className="flex flex-col gap-8">
-        <section className="flex flex-col gap-8 bg-white/50 border-l-4 border-dark-red p-4 rounded-md text-2xl">
-          <p className="font-bold">About</p>
+        <section className="flex flex-col gap-8 bg-white/50 border-l-4 border-dark-red p-4 rounded-md text-lg">
+          <h1 className={`font-bold text-4xl ${makasar.className}`}>About</h1>
           <p>
             {" "}
             I tend to gravitate toward emotionally rich and thought-provoking
@@ -50,7 +50,7 @@ export default async function UserPage({
           </p>
         </section>
         <section>
-          <h2 className={`text-4xl text-dark-blue p-4 ${makasar.className}`}>
+          <h2 className={`text-3xl text-dark-blue p-4 ${makasar.className}`}>
             Pairings
           </h2>
           <RelatedPairings pairings={recommendedPairings} />

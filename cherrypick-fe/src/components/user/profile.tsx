@@ -19,9 +19,8 @@ export default function Profile() {
         <h1
           className={`text-4xl font-bold text-dark-blue p-2 ${makasar.className}`}
         >
-          Display Name
+          Henrique Fernandes
         </h1>
-        <p className="text-2xl text-gray-500 p-2">@username</p>
       </div>
 
       <div className="flex flex-row justify-center gap-x-4 mt-4">
