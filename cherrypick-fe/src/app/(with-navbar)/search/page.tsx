@@ -18,11 +18,8 @@ export default async function Search({
   const query = (await searchParams).query;
 
   const item = await get(getBackendUrl() + `/search?query=${query}`);
-  if (item.status !== 200) {
-    const message =
-      item.status === 404
-        ? `No matches to "${query}" found`
-        : (item.data as unknown as string);
+  if (item.status !== 200 && item.status !== 404) {
+    const message = item.data as unknown as string;
     return <ErrorMessage message={message} />;
   }
 
