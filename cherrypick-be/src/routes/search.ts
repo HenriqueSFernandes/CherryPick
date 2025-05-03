@@ -7,7 +7,7 @@ const databases = new Databases(client);
 
 const fetchBookFromOpenLibrary = async (query: string) => {
     // Search for books matching the query
-    const searchResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`)
+    const searchResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&fields=title,author_name,cover_i&offset=0&limit=1`);
     let book;
 
     if (!searchResponse.ok) {
@@ -73,7 +73,9 @@ router.get("/", async (req: Request, res: Response) => {
         let book: Item;
         if (result.documents.length === 0) {
             // If no results found in the database, try to fetch a book from Open Library
+            console.log(1)
             let newBook = await fetchBookFromOpenLibrary(query as string);
+            console.log(2)
 
             if (newBook) {
                 let storedBook = {
@@ -96,7 +98,7 @@ router.get("/", async (req: Request, res: Response) => {
                 res.status(404).json({ error: "No results found" });
                 return;
             }
-            
+
         } else {
             // If results found in the database, return them
             book = {
