@@ -54,14 +54,14 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
         >
           <Input
             name="query"
-            placeholder="Type here to start discovering..."
+            placeholder="Search here"
             className="w-full rounded-full bg-white border-dark-red border-2 placeholder:text-gray-700"
           />
         </form>
 
         {/* Pairings box */}
-        <div className="border-2 border-dark-red rounded-xl p-4 bg-[#F1E2D9] shadow-md h-[15rem] overflow-hidden">
-          <form className="flex flex-col gap-2">
+        <div className="border-2 border-dark-red rounded-xl p-4 bg-[#F1E2D9] shadow-md h-[14rem] overflow-hidden">
+          <form className="flex flex-col gap-1">
             <div>
               <label
                 htmlFor="item1b"
@@ -72,7 +72,7 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
               <input
                 id="item1b"
                 type="text"
-                placeholder="Pride and Prejudice"
+                placeholder={pairing.item2.title}
                 className="w-full rounded-full border border-gray-300 px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-dark-red"
               />
             </div>
@@ -89,10 +89,7 @@ export default function TopPairing({ pairing }: { pairing: Pairing }) {
                 className="w-full rounded-full border border-gray-300 px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-dark-red"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-dark-red text-white font-semibold rounded-full px-4 py-2 hover:bg-red-800 transition-colors"
-            >
+            <button className="mt-4 bg-dark-red text-white font-semibold rounded-full px-4 py-2 hover:bg-red-800 transition-colors">
               New Pairing
             </button>
           </form>
