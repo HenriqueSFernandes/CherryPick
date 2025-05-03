@@ -3,14 +3,17 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/check.yml">
-    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/lint.yml?label=Checks&logo=github&logoColor=white&labelColor=0b2e44&color=b41b27">
+  <a href="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/deploy.yml">
+    <img alt="Deploy" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/deploy.yml?label=Deploy&logo=githubactions&logoColor=white&labelColor=0b2e44&color=b41b27">
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/issues">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/HenriqueSFernandes/CherryPick?label=Issues&labelColor=0b2e44&color=b41b27" />
   </a>
   <a href="https://github.com/HenriqueSFernandes/CherryPick/pulls">
     <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/HenriqueSFernandes/CherryPick?label=PRs&labelColor=0b2e44&color=b41b27" />
+  </a>
+  <a href="https://github.com/HenriqueSFernandes/CherryPick/actions/workflows/check.yml">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/HenriqueSFernandes/CherryPick/lint.yml?label=Checks&logo=eslint&logoColor=white&labelColor=0b2e44&color=b41b27">
   </a>
 </p>
 
