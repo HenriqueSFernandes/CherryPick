@@ -1,7 +1,10 @@
-name: Deploy Backend
+name: Deploy Frontend and Backend
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -17,7 +20,21 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: Deploy via SSH
+      - name: Deploy Frontend 
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
+            set -e
+            if [ ! -d "${{ secrets.PROJECT_DIR }}" ]; then
+              git clone https://github.com/HenriqueSFernandes/CherryPick.git ${{ secrets.PROJECT_DIR }}
+            fi
+            cd ${{ secrets.PROJECT_DIR }}
+            git pull origin main
+            cd cherrypick-fe
+            docker compose down
+            docker compose up -d --build
+          EOF
+
+      - name: Deploy Backend 
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
             set -e
@@ -30,3 +47,4 @@ jobs:
             docker compose down
             docker compose up -d --build
           EOF
+
