@@ -10,6 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Eye, EyeClosed, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function LoginPage() {
   const { setUser } = useAuth();
