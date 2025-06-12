@@ -1,0 +1,17 @@
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: cherry-pick-neo4j
+    ports:
+      - "7474:7474"   # HTTP Browser UI
+      - "7687:7687"   # Bolt protocol
+    volumes:
+      - ./data:/data
+    environment:
+      - NEO4J_AUTH=none  # No password for development
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7474"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+

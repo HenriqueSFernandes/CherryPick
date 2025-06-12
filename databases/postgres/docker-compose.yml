@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: cherry-pick-postgres
+    environment:
+      POSTGRES_USER: cherryuser
+      POSTGRES_PASSWORD: cherrypass
+      POSTGRES_DB: postgres
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: cherry-pick-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@cherrypick.com
+      PGADMIN_DEFAULT_PASSWORD: adminpass
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    restart: always
+
+volumes:
+  pgdata:
+  pgadmin-data:
+
