@@ -3,7 +3,7 @@
 mkdir -p ../.git/hooks
 tee ../.git/hooks/pre-commit << EOF
 #!/bin/sh
-cd cherrypick-fe/
+cd frontend/
 npx lint-staged
 EOF
 
