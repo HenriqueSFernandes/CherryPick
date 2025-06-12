@@ -32,6 +32,18 @@
   </a>
 </p>
 
+> [!WARNING]
+> **Complete System Overhaul in Progress**
+>
+> This project is currently undergoing a **full architectural and codebase redesign**.
+> The current documentation only applies to the initial hackathon prototype, available under the `cherrypick-v1` tag.
+>
+> Everything beyond that, including code, structure, and functionality, is subject to major changes and should be considered obsolete for now.
+>
+> ✅ Please refer to the `cherrypick-v1` tag for the last stable version of the original prototype.
+> 
+> 🔧 A fully reworked version is being developed from scratch.
+
 # Table of Contents
 
 - [Project Overview](#project-overview)
